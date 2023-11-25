@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {FC, useEffect, useState} from 'react';
-import {Button, Dimensions, TouchableOpacity} from 'react-native';
+import {Dimensions, TouchableOpacity} from 'react-native';
 import {View, Text, StyleSheet} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 
