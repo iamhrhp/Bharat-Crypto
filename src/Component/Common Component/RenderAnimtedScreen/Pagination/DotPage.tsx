@@ -10,7 +10,7 @@ import Animated, {
 
 interface IProps {
   index: number;
-  x: SharedValue<number>;
+  x: any;
 }
 
 const DotPage = ({index, x}: IProps) => {
@@ -18,7 +18,7 @@ const DotPage = ({index, x}: IProps) => {
 
   const animationDotStyle = useAnimatedStyle(() => {
     const widthAnimation = interpolate(
-      x?.value,
+      x.value,
       [
         (index - 1) * SCREEN_WIDTH,
         index * SCREEN_WIDTH,
@@ -28,7 +28,7 @@ const DotPage = ({index, x}: IProps) => {
       Extrapolate.CLAMP,
     );
     const opacityAnimation = interpolate(
-      x?.value,
+      x.value,
       [
         (index - 1) * SCREEN_WIDTH,
         index * SCREEN_WIDTH,
@@ -65,9 +65,7 @@ export default DotPage;
 
 const styles = StyleSheet.create({
   dotContainer: {
-    width: 10,
     height: 10,
-    backgroundColor: 'black',
     borderRadius: 5,
     marginHorizontal: 10,
   },

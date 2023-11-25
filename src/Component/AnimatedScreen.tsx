@@ -15,6 +15,7 @@ import AnimationFiles, {AnimationFilesProps} from './Data/Data';
 import RenderAnimtedScreen from './Common Component/RenderAnimtedScreen/RenderAnimtedScreen';
 import {FlatList} from 'react-native-gesture-handler';
 import Pagination from './Common Component/RenderAnimtedScreen/Pagination/Pagination';
+import AnimatedScreenButton from './Common Component/AnimatedScreenButton/AnimatedScreenButton';
 
 const AnimatedScreen = (props: any) => {
   const flatListRef: any = useAnimatedRef<FlatList<AnimationFilesProps>>();
@@ -58,6 +59,12 @@ const AnimatedScreen = (props: any) => {
       />
       <View style={styles.bottomContainer}>
         <Pagination data={AnimationFiles} x={x} />
+        <AnimatedScreenButton
+          flatListRef={flatListRef}
+          flatlistIndex={flatlistIndex}
+          dataLength={AnimationFiles.length}
+          x={x}
+        />
       </View>
     </View>
   );
@@ -69,12 +76,15 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   bottomContainer: {
+    flexDirection: 'row',
     position: 'absolute',
     bottom: 20,
     left: 0,
     right: 0,
     marginHorizontal: 30,
     marginVertical: 30,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
