@@ -1,13 +1,14 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StatusBar} from 'react-native';
 import {useState} from 'react';
-import TestPage2 from '../Component/TestPage2';
+import TestPage2 from '../Component/AnimatedScreen';
 import TestPage3 from '../Component/TestPage3';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MarketPage from '../Component/MarketPage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import GraphScreen from '../Component/GraphScreen/GraphScreen';
+import AnimatedScreen from '../Component/AnimatedScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,10 +16,10 @@ const Drawer = createDrawerNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="AnimatedScreen">
       <Stack.Screen
         name="Home"
-        component={MarketPage}
+        component={TabNavigation}
         options={{
           title: 'Market',
           headerStyle: {
@@ -29,13 +30,14 @@ const StackNavigation = () => {
         }}
       />
       <Stack.Screen
-        name="TestPage2"
-        component={TestPage2}
+        name="AnimatedScreen"
+        component={AnimatedScreen}
         options={{
           title: 'Welcome 2',
           headerStyle: {
             backgroundColor: '#0d1421',
           },
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -76,12 +78,13 @@ const TabNavigation = () => {
     <Tab.Navigator screenOptions={{tabBarStyle: {backgroundColor: '#0d1421'}}}>
       <Tab.Screen
         name="tabHome"
-        component={StackNavigation}
+        component={MarketPage}
         options={{
           title: 'Market',
           headerStyle: {
             backgroundColor: '#0d1421',
           },
+
           headerTintColor: 'white',
           headerShown: false,
           tabBarIcon: ({focused}) => (
@@ -134,5 +137,5 @@ const TabNavigation = () => {
 };
 
 export default function RoutePage() {
-  return <TabNavigation />;
+  return <StackNavigation />;
 }
