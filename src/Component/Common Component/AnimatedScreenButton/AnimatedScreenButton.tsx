@@ -6,6 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
   useWindowDimensions,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import Animated, {
@@ -23,6 +24,7 @@ interface IProps {
   flatlistIndex: SharedValue<number>;
   flatListRef: AnimatedRef<FlatList<AnimationFilesProps>>;
   x: SharedValue<number>;
+  navigation?: any;
 }
 
 const AnimatedScreenButton = ({
@@ -30,6 +32,7 @@ const AnimatedScreenButton = ({
   flatListRef,
   dataLength,
   x,
+  navigation,
 }: IProps) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
 
@@ -92,7 +95,8 @@ const AnimatedScreenButton = ({
         if (flatlistIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({index: flatlistIndex.value + 1});
         } else {
-          console.log('Navigate to Next Screen');
+          // console.log('Navigate to Next Screen');
+          navigation.navigate('Home');
         }
       }}>
       <Animated.View
