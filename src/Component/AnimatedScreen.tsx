@@ -64,6 +64,7 @@ const AnimatedScreen = (props: any) => {
           flatlistIndex={flatlistIndex}
           dataLength={AnimationFiles.length}
           x={x}
+          navigation={props.navigation}
         />
       </View>
     </View>
